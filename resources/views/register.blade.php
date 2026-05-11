@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - BankGuard</title>
+
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+</head>
+<body>
+
+    <main class="register-page">
+        <section class="register-container">
+
+            <!-- Left Panel -->
+            <div class="register-left">
+                <div class="left-content">
+                    <h1>Secure Your Financial Future</h1>
+
+                    <p>
+                        Join BankGuard today and gain real-time fraud monitoring,
+                        predictive threat analysis, and institutional-grade security
+                        for all your transactions.
+                    </p>
+
+                    <div class="chip-image"></div>
+
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.35009 13.3929L8 16L11.6499 13.3929C13.7523 11.8912 15 9.46667 15 6.88306V3L8 0L1 3V6.88306C1 9.46667 2.24773 11.8912 4.35009 13.3929Z" fill="#ffffff"></path> </g></svg>
+                            <p>256-bit AES Encryption</p>
+                        </div>
+
+                        <div class="feature-item">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.35009 13.3929L8 16L11.6499 13.3929C13.7523 11.8912 15 9.46667 15 6.88306V3L8 0L1 3V6.88306C1 9.46667 2.24773 11.8912 4.35009 13.3929Z" fill="#ffffff"></path> </g></svg>
+                            <p>FCA Regulated Protection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="register-right">
+                <div class="form-wrapper">
+                    <h2>Create Account</h2>
+                    <p class="form-subtitle">Fill in your details to start monitoring.</p>
+
+                    <form action="{{ route('register.submit') }}" method="POST">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="name">FULL NAME</label>
+                            <div class="input-box">
+                                <span class="input-icon">👤</span>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="John Doe"
+                                    value="{{ old('name') }}"
+                                    required
+                                >
+                            </div>
+
+                            @error('name')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">EMAIL ADDRESS</label>
+                            <div class="input-box">
+                                <span class="input-icon">✉</span>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="john@example.com"
+                                    value="{{ old('email') }}"
+                                    required
+                                >
+                            </div>
+
+                            @error('email')
+                                <small class="error-message">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="password-row">
+                            <div class="form-group">
+                                <label for="password">PASSWORD</label>
+                                <div class="input-box">
+                                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#0b1d43"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M4 6V4C4 1.79086 5.79086 0 8 0C10.2091 0 12 1.79086 12 4V6H14V16H2V6H4ZM6 4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4V6H6V4ZM7 13V9H9V13H7Z" fill="#000000"></path> </g></svg>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        placeholder="••••••••"
+                                        required
+                                    >
+                                </div>
+
+                                @error('password')
+                                    <small class="error-message">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password_confirmation">CONFIRM PASSWORD</label>
+                                <div class="input-box">
+                                    <span class="input-icon">↻</span>
+                                    <input
+                                        type="password"
+                                        id="password_confirmation"
+                                        name="password_confirmation"
+                                        placeholder="••••••••"
+                                        required
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="terms-row">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">
+                                I agree to the
+                                <a href="#">Terms of Service</a>
+                                and
+                                <a href="#">Privacy Policy</a>
+                                regarding my financial data processing.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="register-button">
+                            Register Account
+                        </button>
+                    </form>
+
+                    <div class="login-link">
+                        Already have an account?
+                        <a href="{{ route('login') }}">Sign In</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-brand">
+            <h3>BankGuard</h3>
+            <p>© 2024 BankGuard Systems. All rights reserved. Secure Vigilance Monitoring.</p>
+        </div>
+
+        <nav class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Security Disclosure</a>
+            <a href="#">Contact Support</a>
+        </nav>
+    </footer>
+
+</body>
+</html>
